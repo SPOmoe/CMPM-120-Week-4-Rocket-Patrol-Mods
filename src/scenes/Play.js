@@ -81,12 +81,13 @@ class Play extends Phaser.Scene {
       this.scene.restart();
     }
 
-    this.p1Rocket.update();
-    this.starfield.tilePositionX -= 4;
-    this.ship01.update();
-    this.ship02.update();
-    this.ship03.update();
-
+    if (!this.gameOver) {
+      this.p1Rocket.update();
+      this.starfield.tilePositionX -= 4;
+      this.ship01.update();
+      this.ship02.update();
+      this.ship03.update();
+    }
     if (this.checkCollision(this.p1Rocket, this.ship03)) {
       this.p1Rocket.reset();
       this.shipExplode(this.ship03);
@@ -98,13 +99,6 @@ class Play extends Phaser.Scene {
     if (this.checkCollision(this.p1Rocket, this.ship01)) {
       this.p1Rocket.reset();
       this.shipExplode(this.ship01);
-    }
-
-    if (!this.gameOver) {
-      this.p1Rocket.update();
-      this.ship01.update();
-      this.ship02.update();
-      this.ship03.update();
     }
 
     if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
