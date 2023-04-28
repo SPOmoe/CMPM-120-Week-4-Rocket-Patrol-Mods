@@ -64,6 +64,20 @@ class Play extends Phaser.Scene {
     // high score config
     let highScoreConfig = {
       fontFamily: 'Courier',
+      fontSize: '20px',
+      backgroundColor: '#F3B141',
+      color: '#843695',
+      align: 'left',
+      padding: {
+        top: 5,
+        bottom: 5,
+      },
+      fixedWidth: 160
+    }
+
+    // high score config
+    let timeConfig = {
+      fontFamily: 'Courier',
       fontSize: '28px',
       backgroundColor: '#F3B141',
       color: '#843695',
@@ -72,14 +86,14 @@ class Play extends Phaser.Scene {
         top: 5,
         bottom: 5,
       },
-      fixedWidth: 250
+      fixedWidth: 125
     }
 
     // current score
     this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
 
     // high score
-    this.newHighScore = this.add.text((game.config.width / 2) , borderUISize + borderPadding * 2, `Highscore: ${highScore}`, highScoreConfig);
+    this.newHighScore = this.add.text((game.config.width / 2) + (game.config.width / 5) - borderPadding, borderUISize + borderPadding * 2.5, `Highscore:${highScore}`, highScoreConfig);
 
     // GAME OVER flag
     this.gameOver = false;
@@ -89,10 +103,13 @@ class Play extends Phaser.Scene {
     highScoreConfig.fixedWidth = 0;
 
     this.clock = this.time.delayedCall(60000, () => {
+    //this.clock = this.time.delayedCall(10000, () => {
       this.add.text(game.config.width / 2, game.config.height / 2, 'GAME OVER', scoreConfig).setOrigin(0.5);
       this.add.text(game.config.width / 2, game.config.height / 2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
       this.gameOver = true;
     }, null, this);
+
+    this.time = this.add.text(game.config.width / 3, borderUISize + borderPadding * 2, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
   }
 
   update () {
@@ -122,15 +139,23 @@ class Play extends Phaser.Scene {
       this.shipExplode(this.ship01);
     }
 
-    if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-      this.scene.start("menuScene");
+    // game over
+    if (this.gameOver) {
+      // update high score
+      if (this.p1Score > highScore) {
+        highScore = this.p1Score;
+
+        this.newHighScore.setText(`Highscore:${highScore}`);
+      }
+
+      // go to menu screen
+      if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        this.scene.start("menuScene");
+      }
+
     }
 
-    if (this.gameOver && (this.p1Score > highScore)) {
-      highScore = this.p1Score;
-
-      this.newHighScore.setText(`Highscore: ${highScore}`);
-    }
+    this.time.setText(`Time:${Math.ceil(this.clock.getRemainingSeconds())}`);
 
   }
 
