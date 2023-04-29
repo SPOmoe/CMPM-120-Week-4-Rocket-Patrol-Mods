@@ -50,7 +50,7 @@ class Play extends Phaser.Scene {
     // display score
     let scoreConfig = {
       fontFamily: 'Courier',
-      fontSize: '28px',
+      fontSize: '20px',
       backgroundColor: '#F3B141',
       color: '#843695',
       align: 'right',
@@ -75,10 +75,10 @@ class Play extends Phaser.Scene {
       fixedWidth: 160
     }
 
-    // high score config
+    // time score config
     let timeConfig = {
       fontFamily: 'Courier',
-      fontSize: '28px',
+      fontSize: '20px',
       backgroundColor: '#F3B141',
       color: '#843695',
       align: 'left',
@@ -86,11 +86,25 @@ class Play extends Phaser.Scene {
         top: 5,
         bottom: 5,
       },
-      fixedWidth: 125
+      fixedWidth: 100
+    }
+
+    // fire score config
+    let fireConfig = {
+      fontFamily: 'Courier',
+      fontSize: '20px',
+      backgroundColor: '#F3B141',
+      color: '#843695',
+      align: 'left',
+      padding: {
+        top: 5,
+        bottom: 5,
+      },
+      fixedWidth: 50
     }
 
     // current score
-    this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2, this.p1Score, scoreConfig);
+    this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2.5, this.p1Score, scoreConfig);
 
     // high score
     this.newHighScore = this.add.text((game.config.width / 2) + (game.config.width / 5) - borderPadding, borderUISize + borderPadding * 2.5, `Highscore:${highScore}`, highScoreConfig);
@@ -109,7 +123,11 @@ class Play extends Phaser.Scene {
       this.gameOver = true;
     }, null, this);
 
-    this.time = this.add.text(game.config.width / 3, borderUISize + borderPadding * 2, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
+    // countdown
+    this.time = this.add.text(game.config.width / 2 - borderPadding, borderUISize + borderPadding * 2.5, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
+
+    // FIRE text when rocket is flying
+    this.FIRE = this.add.text(game.config.width / 3 - borderPadding, borderUISize + borderPadding * 2.5, ``, fireConfig);
   }
 
   update () {
@@ -158,11 +176,21 @@ class Play extends Phaser.Scene {
     // show time remaining in seconds
     this.time.setText(`Time:${Math.ceil(this.clock.getRemainingSeconds())}`);
 
-    // increase speed when the seconds reach 30
+    // increase ship speed when the seconds reach 30
     if (Math.ceil(this.clock.getRemainingSeconds()) == 30) {
       this.increaseSpeed(this.ship03);
       this.increaseSpeed(this.ship02);
       this.increaseSpeed(this.ship01);
+    }
+
+    // display "FIRE" when rocket is flying
+    if (this.p1Rocket.y != game.config.height - borderUISize - borderPadding) {
+      this.FIRE.setStyle({backgroundColor: '#F3B141', color: '#843695'});
+      this.FIRE.setText(`FIRE`);
+    // otherwise "remove" the text
+    } else {
+      this.FIRE.setStyle({backgroundColor: '#00FF00', color: '#00FF00'});
+      this.FIRE.setText(``);
     }
 
   }
