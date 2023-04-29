@@ -155,7 +155,15 @@ class Play extends Phaser.Scene {
 
     }
 
+    // show time remaining in seconds
     this.time.setText(`Time:${Math.ceil(this.clock.getRemainingSeconds())}`);
+
+    // increase speed when the seconds reach 30
+    if (Math.ceil(this.clock.getRemainingSeconds()) == 30) {
+      this.increaseSpeed(this.ship03);
+      this.increaseSpeed(this.ship02);
+      this.increaseSpeed(this.ship01);
+    }
 
   }
 
@@ -193,5 +201,10 @@ class Play extends Phaser.Scene {
     this.scoreLeft.text = this.p1Score;
 
     this.sound.play('sfx_explosion');
+  }
+
+  // increases spaceship speed by 2x
+  increaseSpeed(ship) {
+    ship.moveSpeed = game.settings.spaceshipSpeed * 2;
   }
 }
