@@ -9,9 +9,15 @@ class Play extends Phaser.Scene {
     this.load.image('spaceship', './assets/spaceship.png');
     this.load.image('starfield', './assets/starfield.png');
     this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
+    this.load.audio('background_music', './assets/background_music.mp3');
   }
   
   create() {
+    this.song = this.sound.add('background_music', {volume: 0.5})
+
+    this.song.play();
+    // this.sound.play('background_music');
+
     // place tile sprite
     this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
   
@@ -138,6 +144,7 @@ class Play extends Phaser.Scene {
   update () {
     // check key input for restart
     if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyR)) {
+      this.song.stop();
       this.scene.restart();
     }
 
@@ -181,6 +188,7 @@ class Play extends Phaser.Scene {
 
       // go to menu screen
       if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
+        this.song.stop();
         this.scene.start("menuScene");
       }
 
