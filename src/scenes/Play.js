@@ -7,16 +7,16 @@ class Play extends Phaser.Scene {
     this.load.image('rocket', './assets/rocket.png');
     this.load.image('smallship', './assets/smallship.png');
     this.load.image('spaceship', './assets/spaceship.png');
-    this.load.image('starfield', './assets/starfield.png');
+    //this.load.image('starfield', './assets/starfield.png');
+    this.load.image('starfield', './assets/space_starfield.png');
+    this.load.image('particle', './assets/particle.png');
     this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
     this.load.audio('background_music', './assets/background_music.mp3');
   }
   
   create() {
-    this.song = this.sound.add('background_music', {volume: 0.5})
-
+    this.song = this.sound.add('background_music', {loop: true, volume: 0.5})
     this.song.play();
-    // this.sound.play('background_music');
 
     // place tile sprite
     this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
@@ -96,7 +96,7 @@ class Play extends Phaser.Scene {
         top: 5,
         bottom: 5,
       },
-      fixedWidth: 100
+      fixedWidth: 90
     }
 
     // fire score config
@@ -150,7 +150,7 @@ class Play extends Phaser.Scene {
 
     if (!this.gameOver) {
       this.p1Rocket.update();
-      this.starfield.tilePositionX -= 4;
+      this.starfield.tilePositionX -= 2;
       this.ship01.update();
       this.ship02.update();
       this.ship03.update();
@@ -230,21 +230,13 @@ class Play extends Phaser.Scene {
   }
 
   shipExplode(ship) {
+    this.add.particles(ship.x, ship.y, 'particle', {speed: 35, maxParticles: 25, maxAliveParticles: 25, gravityY: 200, lifespan: 500});
+
     // temporarily hide ship
     ship.alpha = 0;
 
-    // create explosion sprite at ship's pos
-    let boom = this.add.sprite(ship.x, ship.y, 'explosion').setOrigin(0, 0);
-
-    // play explode animation
-    boom.anims.play('explode');
-
-    // callback after anim
-    boom.on('animationcomplete', () => { // callback after anim completes
-      ship.reset(); // reset ship position
-      ship.alpha = 1; // make ship visible again
-      boom.destroy(); // remove explosion sprite
-    });
+    ship.reset(); // reset ship position
+    ship.alpha = 1; // make ship visible again
 
     // score add and repaint
     this.p1Score += ship.points;
