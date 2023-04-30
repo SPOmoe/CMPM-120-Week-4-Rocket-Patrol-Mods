@@ -14,7 +14,10 @@ class Play extends Phaser.Scene {
   create() {
     // place tile sprite
     this.starfield = this.add.tileSprite(0, 0, 640, 480, 'starfield').setOrigin(0, 0);
-    
+  
+    // add small ship
+    this.smolship = new SmallSpaceship(this, Phaser.Math.Between(game.config.width + borderUISize * 6, game.config.width), Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4), 'smallship', 0, 100).setOrigin(0,0);
+
     // green UI background
     this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x00ff00).setOrigin(0, 0);
     // top white border
@@ -30,10 +33,9 @@ class Play extends Phaser.Scene {
     this.p1Rocket = new Rocket(this, game.config.width / 2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
     // add spaceships (x3)
-    this.ship01 = new Spaceship(this, game.config.width + borderUISize * 6, borderUISize * 4, 'spaceship', 0, 30).setOrigin(0,0);
-    this.ship02 = new Spaceship(this, game.config.width + borderUISize * 3, borderUISize * 5 + borderPadding * 2, 'spaceship', 0, 20).setOrigin(0,0);
-    this.ship03 = new Spaceship(this, game.config.width, borderUISize * 6 + borderPadding * 4, 'spaceship', 0, 10).setOrigin(0,0);
-    this.smolship = new SmallSpaceship(this, Phaser.Math.Between(game.config.width + borderUISize * 6, game.config.width), Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4), 'smallship', 0, 100).setOrigin(0,0);
+    this.ship01 = new Spaceship(this, Phaser.Math.Between(game.config.width + borderUISize * 6, game.config.width), Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4), 'spaceship', 0, 30).setOrigin(0,0);
+    this.ship02 = new Spaceship(this, Phaser.Math.Between(game.config.width + borderUISize * 6, game.config.width), Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4), 'spaceship', 0, 20).setOrigin(0,0);
+    this.ship03 = new Spaceship(this, Phaser.Math.Between(game.config.width + borderUISize * 6, game.config.width), Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4), 'spaceship', 0, 10).setOrigin(0,0);
 
     keyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
     keyR = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);

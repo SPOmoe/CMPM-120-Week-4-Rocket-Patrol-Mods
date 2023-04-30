@@ -10,6 +10,8 @@
  *  - Display the time remaining (in seconds) on the screen [10]
  *  - Implement the speed increase that happens after 30 seconds in the original game [5]
  *  - Implement the 'FIRE' UI text from the original game [5]
+ *  - Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points [15]
+ *  - Randomize each spaceship's movement direction at the start of each play [5]
  * 
  */
 
