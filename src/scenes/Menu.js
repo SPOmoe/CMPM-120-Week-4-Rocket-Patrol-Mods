@@ -43,6 +43,7 @@ class Menu extends Phaser.Scene {
       // easy mode
       game.settings = {
         spaceshipSpeed: 3,
+        smallSpaceshipSpeed: 6,
         gameTime: 60000
       }
 
@@ -54,6 +55,7 @@ class Menu extends Phaser.Scene {
       // easy mode
       game.settings = {
         spaceshipSpeed: 4,
+        smallSpaceshipSpeed: 8,
         gameTime: 45000
       }
 
