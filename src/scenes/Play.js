@@ -96,7 +96,7 @@ class Play extends Phaser.Scene {
         top: 5,
         bottom: 5,
       },
-      fixedWidth: 90
+      fixedWidth: 100
     }
 
     // fire score config
@@ -133,7 +133,6 @@ class Play extends Phaser.Scene {
       this.gameOver = true;
     }, null, this);
 
-
     // countdown
     this.currTime = this.add.text(game.config.width / 2 - borderPadding, borderUISize + borderPadding * 2.5, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
 
@@ -160,22 +159,26 @@ class Play extends Phaser.Scene {
     if (this.checkCollision(this.p1Rocket, this.ship03)) {
       this.p1Rocket.reset();
       this.shipExplode(this.ship03);
-    }
+      this.clock.delay += 3000;
+   }
 
     if (this.checkCollision(this.p1Rocket, this.ship02)) {
       this.p1Rocket.reset();
       this.shipExplode(this.ship02);
+      this.clock.delay += 3000;
     }
 
     if (this.checkCollision(this.p1Rocket, this.ship01)) {
       this.p1Rocket.reset();
       this.shipExplode(this.ship01);
+      this.clock.delay += 3000;
     }
 
     if (this.checkCollision(this.p1Rocket, this.smolship)) {
       this.p1Rocket.reset();
       this.shipExplode(this.smolship);
-    }
+      this.clock.delay += 3000;
+  }
 
     // game over
     if (this.gameOver) {

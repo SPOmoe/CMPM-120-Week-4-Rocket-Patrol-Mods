@@ -17,6 +17,7 @@
  *  - Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship [15]
  *  - Create a new scrolling tile sprite for the background [5]
  *  - Create a new title screen (e.g., new artwork, typography, layout) [10]
+ *  - Implement a new timing/scoring mechanism that adds time to the clock for successful hits [15]
  * 
  */
 
