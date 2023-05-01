@@ -24,6 +24,7 @@ class Menu extends Phaser.Scene {
 
     // show menu text
     let title = this.add.text(game.config.width / 2, game.config.height / 2 - ((borderUISize - borderPadding) * 8), 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+    // source: https://github.com/photonstorm/phaser3-examples/blob/master/public/src/display/tint/text%20tint.js
     title.setTintFill(0xCC3372, 0xCC3372, 0x33CC8D, 0x33CC8D);
 
     menuConfig.color = '#0da6f2';
@@ -34,7 +35,7 @@ class Menu extends Phaser.Scene {
     -> to move right\n\
     F to fire', menuConfig).setOrigin(0.5);
 
-    this.add.text(game.config.width / 2, game.config.height / 2 + ((borderUISize - borderPadding) * 8), 'Press <- for Novice -> for Expert', menuConfig).setOrigin(0.5);
+    this.add.text(game.config.width / 2, game.config.height / 2 + ((borderUISize - borderPadding) * 8), 'Press <- for Novice, -> for Expert', menuConfig).setOrigin(0.5);
 
     // define keys
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
