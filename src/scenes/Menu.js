@@ -32,7 +32,7 @@ class Menu extends Phaser.Scene {
     this.add.text(game.config.width / 2, game.config.height / 2, 'Controls:\n\
     <- to move left\n\
     -> to move right\n\
-    F to fire', menuConfig).setOrigin(0.5);
+    f to fire', menuConfig).setOrigin(0.5);
 
     this.add.text(game.config.width / 2, game.config.height / 2 + ((borderUISize - borderPadding) * 8), 'Press <- for Novice, -> for Expert', menuConfig).setOrigin(0.5);
 
