@@ -1,9 +1,9 @@
 /**
  * Marlene Inoue
  * 
- * TITLE
+ * Title: Rocket Patrol Adventure
  * 
- * TIME
+ * Time: ~13 hours
  * 
  * Mods:
  *  - Track a high score that persists across scenes and display it in the UI [5]
@@ -17,7 +17,9 @@
  *  - Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship [15]
  *  - Create a new scrolling tile sprite for the background [5]
  *  - Create a new title screen (e.g., new artwork, typography, layout) [10]
+ *      - Title Source: source: https://github.com/photonstorm/phaser3-examples/blob/master/public/src/display/tint/text%20tint.js
  *  - Implement a new timing/scoring mechanism that adds time to the clock for successful hits [15]
+ *  - Allow the player to control the Rocket after it's fired [5]
  * 
  */
 

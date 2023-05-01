@@ -7,7 +7,6 @@ class Play extends Phaser.Scene {
     this.load.image('rocket', './assets/rocket.png');
     this.load.image('smallship', './assets/smallship.png');
     this.load.image('spaceship', './assets/spaceship.png');
-    //this.load.image('starfield', './assets/starfield.png');
     this.load.image('starfield', './assets/space_starfield.png');
     this.load.image('particle', './assets/particle.png');
     this.load.spritesheet('explosion', './assets/explosion.png', {frameWidth: 64, frameHeight: 32, startFrame: 0, endFrame: 9});
@@ -82,7 +81,7 @@ class Play extends Phaser.Scene {
         top: 5,
         bottom: 5,
       },
-      fixedWidth: 160
+      fixedWidth: 200
     }
 
     // time score config
@@ -117,7 +116,7 @@ class Play extends Phaser.Scene {
     this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding * 2.5, this.p1Score, scoreConfig);
 
     // high score
-    this.newHighScore = this.add.text((game.config.width / 2) + (game.config.width / 5) - borderPadding, borderUISize + borderPadding * 2.5, `Highscore:${highScore}`, highScoreConfig);
+    this.newHighScore = this.add.text((game.config.width / 2) + (game.config.width / 8) - borderPadding - borderUISize, borderUISize + borderPadding * 2.5, `Highscore:${highScore}`, highScoreConfig);
 
     // GAME OVER flag
     this.gameOver = false;
@@ -134,10 +133,10 @@ class Play extends Phaser.Scene {
     }, null, this);
 
     // countdown
-    this.currTime = this.add.text(game.config.width / 2 - borderPadding, borderUISize + borderPadding * 2.5, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
+    this.currTime = this.add.text(game.config.width / 3 - borderPadding + borderUISize, borderUISize + borderPadding * 2.5, `Time:${this.clock.getRemainingSeconds()}`, timeConfig);
 
     // FIRE text when rocket is flying
-    this.FIRE = this.add.text(game.config.width / 3 - borderPadding, borderUISize + borderPadding * 2.5, ``, fireConfig);
+    this.FIRE = this.add.text(game.config.width / 4 - borderPadding + (borderUISize / 2), borderUISize + borderPadding * 2.5, ``, fireConfig);
   }
 
   update () {
