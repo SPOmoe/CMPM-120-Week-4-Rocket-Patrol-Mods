@@ -12,11 +12,9 @@ class Menu extends Phaser.Scene {
 
   create() {
     let menuConfig = {
-          fontFamily: 'Courier',
-          fontSize: '28px',
-          backgroundColor: '#F3B141',
-          color: '#843695',
-          align: 'right',
+          fontFamily: 'Monospace',
+          fontSize: '32px',
+          align: 'left',
           padding: {
             top: 5,
             bottom: 5,
@@ -25,13 +23,18 @@ class Menu extends Phaser.Scene {
     }
 
     // show menu text
-    this.add.text(game.config.width / 2, game.config.height / 2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+    let title = this.add.text(game.config.width / 2, game.config.height / 2 - ((borderUISize - borderPadding) * 8), 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+    title.setTintFill(0xCC3372, 0xCC3372, 0x33CC8D, 0x33CC8D);
 
-    this.add.text(game.config.width / 2, game.config.height / 2, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
+    menuConfig.color = '#0da6f2';
+    menuConfig.fontSize = '28px';
+    
+    this.add.text(game.config.width / 2, game.config.height / 2, 'Controls:\n\
+    <- to move left\n\
+    -> to move right\n\
+    F to fire', menuConfig).setOrigin(0.5);
 
-    menuConfig.backgroundColor = '#00FF00';
-    menuConfig.color = "#000";
-    this.add.text(game.config.width / 2, game.config.height / 2 + borderUISize + borderPadding, 'Press <- for Novice for -> for Expert', menuConfig).setOrigin(0.5);
+    this.add.text(game.config.width / 2, game.config.height / 2 + ((borderUISize - borderPadding) * 8), 'Press <- for Novice -> for Expert', menuConfig).setOrigin(0.5);
 
     // define keys
     keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

@@ -16,6 +16,7 @@
  *      - Source: https://soundcloud.com/raineypark/free-vlog-music-8bit-love-downtempo-lofi-nocopyright-music?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
  *  - Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship [15]
  *  - Create a new scrolling tile sprite for the background [5]
+ *  - Create a new title screen (e.g., new artwork, typography, layout) [10]
  * 
  */
 
