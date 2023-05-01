@@ -20,6 +20,7 @@ class Spaceship extends Phaser.GameObjects.Sprite {
 
     // position reset
     reset() {
+        this.y = Phaser.Math.Between(borderUISize * 4, borderUISize * 6 + borderPadding * 4);
         this.x = game.config.width;
     }
 }

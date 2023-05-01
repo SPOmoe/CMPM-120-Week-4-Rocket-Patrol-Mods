@@ -11,7 +11,6 @@
  *  - Implement the speed increase that happens after 30 seconds in the original game [5]
  *  - Implement the 'FIRE' UI text from the original game [5]
  *  - Create a new enemy Spaceship type (w/ new artwork) that's smaller, moves faster, and is worth more points [15]
- *  - Randomize each spaceship's movement direction at the start of each play [5]
  *  - Add your own (copyright-free) background music to the Play scene [5]
  *      - Source: https://soundcloud.com/raineypark/free-vlog-music-8bit-love-downtempo-lofi-nocopyright-music?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
  *  - Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship [15]
@@ -21,6 +20,9 @@
  *  - Implement a new timing/scoring mechanism that adds time to the clock for successful hits [15]
  *  - Allow the player to control the Rocket after it's fired [5]
  * 
+ * Possible Extra Mods:
+ *  - Rocket spins when the player is controlling it
+ *  - Randomize all Spaceships y-axis location when it's reset
  */
 
 let config = {
