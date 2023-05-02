@@ -20,9 +20,8 @@
  *  - Implement a new timing/scoring mechanism that adds time to the clock for successful hits [15]
  *  - Allow the player to control the Rocket after it's fired [5]
  * 
- * Possible Extra Mods:
- *  - Rocket spins when the player is controlling it
- *  - Randomize all Spaceships y-axis location when it's reset
+ *  Create Your Own Mods:
+ *  - Rocket spins when the player is controlling it [5] - Professor Nathan
  */
 
 let config = {
